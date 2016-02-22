@@ -7,7 +7,7 @@ import (
 )
 
 func testHandler(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintf(w, "This is the auth service : )")
+  fmt.Fprintf(w, "This is the auth service and it has been modified: )")
 }
 func main() {
 

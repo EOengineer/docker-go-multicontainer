@@ -3,10 +3,10 @@ auth-service:
   ports:
     - "3010:8080"
   volumes:
-    - .:/go/src/github.com/eoengineer/auth-service
+    - ./auth-service:/go/src/github.com/eoengineer/auth-service
 translation-service:
   build: ./translation-service
   ports:
     - "3020:8080"
   volumes:
-    - .:/go/src/github.com/eoengineer/translation-service
+    - ./translation-service:/go/src/github.com/eoengineer/translation-service
