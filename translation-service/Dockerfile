@@ -1,4 +1,7 @@
-From golang:latest
+FROM gliderlabs/alpine:3.3
+
+RUN apk add git --update
+RUN apk add go --update
 
 ENV GOPATH /go
 ENV PATH $GOPATH/BIN:$PATH
@@ -11,12 +14,12 @@ ENV PATH $GOPATH/BIN:$PATH
 RUN go get github.com/ddollar/init
 RUN go get github.com/cleblanc87/rerun
 
-WORKDIR /go/src/git.arthrex.io/marketing/translation-service/
-COPY . /go/src/git.arthrex.io/marketing/translation-service/
+WORKDIR /go/src/github.com/eoengineer/translation-service/
+COPY . /go/src/github.com/eoengineer/translation-service/
 RUN go install ./...
 
 ENTRYPOINT ["/go/bin/init"]
 
-CMD ["bin/api"]
+CMD ["./bin/translation-service"]
 
 EXPOSE 8080
