@@ -1,13 +1,19 @@
 From golang:latest
 
-ADD . /go/src/github.com/eoengineer/auth-service
+ENV GOPATH /go
+ENV PATH $GOPATH/BIN:$PATH
 
-COPY ./rerun-scripts/auth /go/bin
+# ADD . /go/src/github.com/eoengineer/auth-service
 
-RUN go install github.com/eoengineer/auth-service
+RUN go get github.com/ddollar/init
+RUN go get github.com/cleblanc87/rerun
 
-ENTRYPOINT /go/bin/init
+WORKDIR /go/src/git.arthrex.io/marketing/auth-service/
+COPY . /go/src/git.arthrex.io/marketing/auth-service/
+RUN go install ./...
 
-CMD ["bin/auth"]
+ENTRYPOINT ["/go/bin/init"]
+
+CMD ["bin/api"]
 
 EXPOSE 8080

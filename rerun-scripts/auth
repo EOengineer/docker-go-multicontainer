@@ -1,9 +1,0 @@
-#!/bin/sh
-
-cd $GOPATH/bin
-
-if [ "$DEVELOPMENT" == "true" ]; then
-  $GOPATH/bin/rerun -build github.com/eoengineer/auth-service
-else
-  $GOPATH/bin/auth
-fi
